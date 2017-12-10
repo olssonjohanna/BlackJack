@@ -90,6 +90,19 @@ public class Table {
         }
     }
 
+    public void startAllHands(){
+        for (Hand hand : listOfHands){
+            hand.startHand();
+        }
+        dealer.getDealerHand().startHand();
+    }
 
+    public ArrayList<Hand> getListOfHands() {
+        return listOfHands;
+    }
+
+    public Dealer getDealer() {
+        return dealer;
+    }
 }
 

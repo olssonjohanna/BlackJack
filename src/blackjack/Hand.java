@@ -37,6 +37,10 @@ public class Hand {
     public boolean isInPlay() {
         return inPlay;
     }
+
+    public ArrayList<Card> getListOfCards() {
+        return listOfCards;
+    }
 }
 
 
