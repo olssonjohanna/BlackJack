@@ -6,7 +6,7 @@ public class Card {
     private final int CARD_VALUE;
     private static int idCounter = 0;
 
-    public Hand(int CARD_VALUE) {
+    public Card(int CARD_VALUE) {
         this.CARD_VALUE = CARD_VALUE;
         this.CARD_ID = Card.idCounter;
         Card.idCounter++;

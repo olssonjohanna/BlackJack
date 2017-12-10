@@ -1,5 +1,7 @@
 package blackjack;
 
+import java.util.ArrayList;
+
 public class CollectionOfCards {
 
     private ArrayList<Card> listOfCards;
@@ -14,6 +16,7 @@ public class CollectionOfCards {
 
     public Card removeCard(){
         //Returnera ett slumpmässigt kort från listan och ta bort den från lista. Kolla ifall listan är tom först.
+        return new Card(5);
     }
 
     public void createDeckOfCard(){
@@ -24,4 +27,7 @@ public class CollectionOfCards {
         //Fundera över möjligheten ifall vi vill skapa flera lekar. Ta emot en parameter över hur många gånger vi ska köra funktionen?
     }
 
+    public ArrayList<Card> getListOfCards() {
+        return listOfCards;
+    }
 }

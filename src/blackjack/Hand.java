@@ -1,5 +1,7 @@
 package blackjack;
 
+import java.util.ArrayList;
+
 public class Hand {
 
     private ArrayList<Card> listOfCards;
@@ -17,8 +19,9 @@ public class Hand {
         //Eller ändra currentBet till ett nytt värde, då räcker det med en funktion.
     }
 
-    public int handValue(){
+    public int getHandValue(){
         //Returnera värdet av korten i handen
+        return 0;
     }
 
     public void stopHand(){
@@ -27,6 +30,13 @@ public class Hand {
         //Behöver även en funktion för att starta handen igen vid en ny giv.
     }
 
+    public void startHand(){
+
+    }
+
+    public boolean isInPlay() {
+        return inPlay;
+    }
 }
 
 

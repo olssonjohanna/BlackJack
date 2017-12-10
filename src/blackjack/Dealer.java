@@ -1,10 +1,12 @@
 package blackjack;
 
+import java.util.ArrayList;
+
 public class Dealer {
 
-    private ArrayList<Card> availableCards;
-    private ArrayList<Card> usedCards;
-    private ArrayList<Hands> listOfHands;
+    private CollectionOfCards availableCards;
+    private CollectionOfCards usedCards;
+    private ArrayList<Hand> listOfHands;
     private Hand dealerHand;
     private String name;
     private String birthdate;
@@ -12,10 +14,10 @@ public class Dealer {
     public Dealer(String name, String birthdate) {
         this.name = name;
         this.birthdate = birthdate;
-        this.availableCards = new ArrayList<>();
-        this.usedCards = new ArrayList<>();
+        this.availableCards = new CollectionOfCards();
+        this.usedCards = new CollectionOfCards();
         this.listOfHands = new ArrayList<>();
-        this.dealerHand = new Hand();
+        this.dealerHand = new Hand(0);
     }
 
     public void shuffleDeck(){
@@ -25,6 +27,16 @@ public class Dealer {
     public void dealCard(Hand hand){
         //Ta ett kort från availableCards och lägg till detta i rätt hand och i usedCards.
     }
+
+    public CollectionOfCards getAvailableCards() {
+        return availableCards;
+    }
+
+    public Hand getDealerHand() {
+        return dealerHand;
+    }
+
+
 
     //Har för mig att vi sa fler funktioner men kommer inte på dom nu.
 
