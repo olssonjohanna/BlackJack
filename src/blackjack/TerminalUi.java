@@ -1,5 +1,9 @@
 package blackjack;
 
+import blackjack.Hand;
+import blackjack.Table;
+
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class TerminalUi {
@@ -12,7 +16,7 @@ public class TerminalUi {
         this.scanner = new Scanner(System.in);
     }
 
-    public void startGame() {
+    public void startGame(){
         String name;
         String birthdate;
         int numberOfDecks;
@@ -22,23 +26,27 @@ public class TerminalUi {
         name = scanner.nextLine();
         System.out.print("Enter birthdate of dealer: ");
         birthdate = scanner.nextLine();
+//        System.out.print("How many decks should the table have: ");
+//        numberOfDecks = scanner.nextInt();
         numberOfDecks = checkNumber("How many decks should the table have? ");
         table.setDealer(name, birthdate, numberOfDecks);
+//        System.out.print("How many players: ");
+//        numberOfPlayers = scanner.nextInt();
         numberOfPlayers = checkNumber("How many players? ");
-        for (int i = 0; i < numberOfPlayers; i++) {
+        for (int i = 0; i < numberOfPlayers; i++){
             table.addHand(0);
         }
         startRound();
-        while (endOfRound()) {
+        while (endOfRound()){
             startRound();
         }
     }
 
-    private void startRound() {
+    private void startRound(){
         table.startAllHands();
         table.startNewRound();
         table.checkBlackJack();
-        for (Hand hand : table.getListOfHands()) {
+        for (Hand hand : table.getListOfHands()){
             handleHand(hand);
             System.out.println();
         }
@@ -46,24 +54,24 @@ public class TerminalUi {
         table.checkForWinners();
     }
 
-    private void handleHand(Hand hand) {
-        if (!hand.isInPlay()) {
+    private void handleHand(Hand hand){
+        if (!hand.isInPlay()){
             return;
         }
-        while (true) {
+        while (true){
             int choice;
             int value = hand.getHandValue();
             System.out.println("Dealer card: " + table.getDealer().getDealerHand().getListOfCards());
             System.out.println("Current cards: " + hand.getListOfCards());
             System.out.println("Current value: " + value);
-            if (!hand.isInPlay()) {
+            if (!hand.isInPlay()){
                 System.out.println("Bust!");
                 break;
             }
             choice = checkNumber("Enter 1 for a card, 0 to stop: ");
-            if (choice == 0) {
+            if (choice == 0){
                 break;
-            } else if (choice == 1) {
+            } else if (choice == 1){
                 table.dealCard(hand);
             } else {
                 System.out.println("Invalid input!");
@@ -71,23 +79,24 @@ public class TerminalUi {
         }
     }
 
-    private boolean endOfRound() {
+    private boolean endOfRound(){
         String answer;
-        while (true) {
-            System.out.print("Would you like to continue to play? y/n");
+        System.out.print("Would you like to continue to play? y/n");
+
+        while (true){
             answer = scanner.nextLine();
-            if (answer.toLowerCase().equals("y")) {
+            if (answer.toLowerCase().equals("y")){
                 return true;
-            } else if (answer.toLowerCase().equals("n")) {
+            } else if (answer.toLowerCase().equals("n")){
                 return false;
             }
         }
     }
 
-    private int checkNumber(String question) {
-        while (true) {
+    private int checkNumber(String question){
+        while (true){
             System.out.print(question);
-            if (scanner.hasNextInt()) {
+            if (scanner.hasNextInt()){
                 return scanner.nextInt();
             }
             System.out.println("Invalid input, must enter a number!");

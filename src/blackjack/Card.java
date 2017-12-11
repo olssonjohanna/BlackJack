@@ -3,17 +3,35 @@ package blackjack;
 public class Card {
 
     private final int CARD_ID;
-    private final int CARD_VALUE;
+    private int cardValue;
     private static int idCounter = 0;
 
-    public Card(int CARD_VALUE) {
-        this.CARD_VALUE = CARD_VALUE;
+    public Card(int cardValue) {
+        this.cardValue = cardValue;
         this.CARD_ID = Card.idCounter;
         Card.idCounter++;
+
     }
 
-    public int getCARD_VALUE() {
-        return CARD_VALUE;
+    public int getCardValue() {
+        return cardValue;
+    }
+
+    public void changeValue(){
+        if (cardValue == 11){
+            cardValue = 1;
+        }
+    }
+
+    public void resetValue(){
+        if (cardValue == 1){
+            cardValue = 11;
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "" + cardValue;
     }
 }
 // Måste komma på en lösning för ett kort som är ett ess. Dessa kan ha värde 1 eller 11.
